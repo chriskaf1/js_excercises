@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Click the button for fizzbuzz!</h1>
+    <div>In this exercise from eloquentjavascript.net, when you click the button below, all numbers between 1 and 100
+        will be printed, unless the number is divisible by 3, 5 or 15, where something different happens:<br>
+        If the number is divisible by 3 but not 5, the output should be "Fizz" instead. If it is divisible by 5 but not
+        3, "Buzz" should be printed. If it is divisible by both, we should get "FizzBuzz".<br><br></div>
+    <button class="fizzbutton">Click to start</button>
+    <p class="fizzbuzz"></p>
+    <script>
+        const para = document.querySelector('.fizzbuzz');
+        const button = document.querySelector('.fizzbutton');
+        button.addEventListener("click", () => {
+            para.innerHTML = "";
+            for (let i = 1; i <= 100; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    para.innerHTML += "<strong>Fizzbuzz </strong>"
+                    // console.log("FizzBuzz");
+                } else if (i % 5 === 0 && !(i % 3 === 0)) {
+                    para.innerHTML += "Buzz "
+                    // console.log("Buzz");
+                } else if (i % 3 === 0 && !(i % 5 === 0)) {
+                    para.innerHTML += "Fizz "
+                    // console.log("Fizz");
+                } else {
+                    para.innerHTML += i + " ";
+                    // console.log(i);
+                }
+                if (i % 10 == 0) {
+                    para.innerHTML += "<br>"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
