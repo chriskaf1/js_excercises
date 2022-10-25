@@ -1,77 +1,13 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Javascript Excercises</title>
-    <style>
-        input {
-            font-size: 2em;
-            margin: 10px 1px 0;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Javascript loop & condition excercises</title>
 </head>
-
 <body>
-    <h1>Create a grid</h1>
-    <div>Please input the grid size:<br></div>
-    <input class="numberInput" type="text">
-    <p></p>
-
-    <script>
-        const input = document.querySelector('.numberInput');
-        const para = document.querySelector('p');
-        input.addEventListener("change", () => {
-            const num = parseFloat(input.value);
-            if (isNaN(num) || num <= 0) {
-                para.textContent = "You need to enter a (positive) number!";
-            } else {
-                para.innerHTML = "";
-                for (let row = 1; row <= num; row++) {
-                    if (row % 2 == 0) {
-                        para.innerHTML += createOddRow(num) + "<br>";
-                    } else {
-                        para.innerHTML += createEvenRow(num) + "<br>";
-                    }
-                }
-            }
-        });
-        function createEvenRow(size) {
-            let myString = ""
-            for (let i = 0; i < size; i++) {
-                myString += evenRow(myString);
-            }
-            return myString;
-        }
-        function createOddRow(size) {
-            let myString = ""
-            for (let i = 0; i < size; i++) {
-                myString += oddRow(myString);
-            }
-            return myString;
-        }
-        function oddRow(rowText) {
-            if (rowText === "") {
-                return "@";
-            } else if (rowText.slice(-1) === "@") {
-                return "#";
-            }
-            else {
-                return "@";
-            }
-        }
-        function evenRow(rowText) {
-            if (rowText === "") {
-                return "#";
-            } else if (rowText.slice(-1) === "#") {
-                return "@";
-            }
-            else {
-                return "#";
-            }
-        }
-    </script>
+    <a href="grid.html">Create a grid</a>
 </body>
-
 </html>

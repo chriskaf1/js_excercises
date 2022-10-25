@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Create a grid</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>Create a grid</h1>
+    <div>Please input the grid size:<br></div>
+    <input class="numberInput" type="text">
+    <p class="gridOutput"></p>
+
+    <script>
+        const input = document.querySelector('.numberInput');
+        const para = document.querySelector('.gridOutput');
+        input.addEventListener("change", () => {
+            const num = parseFloat(input.value);
+            if (isNaN(num) || num <= 0) {
+                para.innerHTML = "You need to enter a (positive) number!";
+            } else {
+                para.innerHTML = "";
+                /*
+                for (let row = 0; row < num; row++) {
+                    for (let col = 0; col < num; col++) {
+                        if ((row + col) % 2 == 0) {
+                            para.innerHTML += "#";
+                        } else {
+                            para.innerHTML += "@";
+                        }
+                    }
+                    para.innerHTML += "<br>";
+                }
+            }
+        }); 
+        Hangs with big grid sizes (>75) */
+                for (let row = 1; row <= num; row++) {
+                    if (row % 2 == 0) {
+                        para.innerHTML += createOddRow(num) + "<br>";
+                    } else {
+                        para.innerHTML += createEvenRow(num) + "<br>";
+                    }
+                }
+            }
+        });
+        function createEvenRow(size) {
+            let myString = ""
+            for (let i = 0; i < size; i++) {
+                myString += evenRow(myString);
+            }
+            return myString;
+        }
+        function createOddRow(size) {
+            let myString = ""
+            for (let i = 0; i < size; i++) {
+                myString += oddRow(myString);
+            }
+            return myString;
+        }
+        function oddRow(rowText) {
+            if (rowText === "") {
+                return "@";
+            } else if (rowText.slice(-1) === "@") {
+                return "#";
+            }
+            else {
+                return "@";
+            }
+        }
+        function evenRow(rowText) {
+            if (rowText === "") {
+                return "#";
+            } else if (rowText.slice(-1) === "#") {
+                return "@";
+            }
+            else {
+                return "#";
+            }
+        }
+    </script>
+</body>
+
+</html>
