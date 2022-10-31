@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div>This page lets you convert your paper's grade from a 0-100 grading system to a letter grading system. Click the
+    button below to enter grade. You should enter a number between 0-100. A random grade is chosen as default each time
+    you click the button for demonstration purposes.<br></div>
+  <button class="startButton">Click to begin</button>
+  <p class="output"></p>
+</body>
+<script>
+  const para = document.querySelector('.output');
+  const button = document.querySelector('.startButton');
+  button.addEventListener("click", () => {
+    let grade = getGrade();
+    if (isNaN(grade)) {
+      para.innerHTML = `The input given is not a number, please try again!`
+    } else {
+      para.innerHTML = `The grade you typed is  "${grade}" <br>`;
+      console.log(grade);
+      switch (true) {
+        case grade > 100 || grade < 0:
+          para.innerHTML += `Impossible or wrong input. Please input grade between 0-100`;
+          break;
+        // If score is 90 or greater. Will only go here if the above case is false.
+        case grade >= 90:
+          para.innerHTML += `this translates to "A" in a letter based grading system. Congratulations!`
+          console.log("A");
+          break;
+        // If score is 80 or greater. Same ^ 
+        case grade >= 80:
+          para.innerHTML += `this translates to "B" in a letter based grading system. Very Good!`
+          console.log("B");
+          break;
+        // If score is 70 or greater
+        case grade >= 70:
+          para.innerHTML += `this translates to "C" in a letter based grading system. You did an OK job, but you should be more careful!`
+          console.log("C");
+          break;
+        // If score is 60 or greater
+        case grade >= 60:
+          para.innerHTML += `this translates to "D" in a letter based grading system. This is barely above the base, you should study harder!`
+          console.log("D");
+          break;
+        // Anything 59 or below is failing
+        default:
+          para.innerHTML += `this translates to "F" in a letter based grading system. "F" stands for failure, you should study and try again!`
+          console.log("F");
+      }
+    }
+  });
+  function getGrade(x) {
+    return +prompt("Please enter your grade here", Math.floor(Math.random() * 100) + 1);
+  }
+</script>
+
+</html>
