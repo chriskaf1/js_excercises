@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Find minimum/maximum</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>Find min/max of two given numbers</h1>
+    <button class="minButton button">Min</button>
+    <button class="maxButton button">Max</button>
+    <p class="paragraph"></p>
+    <script>
+        const minButton = document.querySelector('.minButton');
+        const maxButton = document.querySelector('.maxButton');
+        // const button = document.querySelector('.button');
+        const para = document.querySelector('.paragraph');
+        minButton.addEventListener("click", () => {
+            let a = getNum("a");
+            let b = getNum("b");
+            para.innerHTML = "The smaller number is: " + (a < b ? a : b);
+        });
+        maxButton.addEventListener("click", () => {
+            let a = getNum("a");
+            let b = getNum("b");
+            para.innerHTML = "The largest number is: " + (a < b ? b : a);
+        });
+
+        function getNum(number) {
+            input = +prompt(`Give number ${number}`);
+            while (isNaN(input)) {
+                alert(`This is not a number, please give number ${number} again`);
+                input = +prompt(`Give number ${number}`);
+            }
+            return input;
+        }
+
+    </script>
+</body>
+
+</html>
