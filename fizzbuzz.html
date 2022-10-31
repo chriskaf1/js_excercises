@@ -15,11 +15,11 @@
         will be printed, unless the number is divisible by 3, 5 or 15, where something different happens:<br>
         If the number is divisible by 3 but not 5, the output should be "Fizz" instead. If it is divisible by 5 but not
         3, "Buzz" should be printed. If it is divisible by both, we should get "FizzBuzz".<br><br></div>
-    <button class="fizzbutton">Click to start</button>
-    <p class="fizzbuzz"></p>
+    <button class="fizzButton">Click to start</button>
+    <p class="fizzBuzz"></p>
     <script>
-        const para = document.querySelector('.fizzbuzz');
-        const button = document.querySelector('.fizzbutton');
+        const para = document.querySelector('.fizzBuzz');
+        const button = document.querySelector('.fizzButton');
         button.addEventListener("click", () => {
             para.innerHTML = "";
             for (let i = 1; i <= 100; i++) {
