@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Count Characters</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>Counting characters</h1>
+    <div>Enter your text below in the left field and the letter you want to count into the right field and press enter.
+    </div>
+    <input class="inputString" type="text">
+    <input class="searchCharacter" type="text" maxlength="1" style="width: 1em;">
+    <p class="paragraph"></p>
+
+    <script>
+        const input = document.querySelector('.inputString');
+        const search = document.querySelector('.searchCharacter');
+        const para = document.querySelector('.paragraph');
+        [input, search].forEach(function (element) {
+            //addEventListener for both input and search fields so that the
+            // search is updated every time either of those fields changes
+            // Maybe add a second class -same for both input fields- and use addEventListener there instead?
+            element.addEventListener("change", () => {
+                para.innerHTML = "";
+                if (input.value == "" || search.value == "") {
+                    para.innerHTML = "Please enter your text and/or the character to search for in their respective fields!";
+                } else {
+                    para.innerHTML = `"${search.value}" was found ${countChar(input.value, search.value)} times in your text`;
+                }
+
+            })
+        });
+
+        function countChar(inputString, letter) {
+            let count = 0
+            for (let i = 0; i <= inputString.length; i++) {
+                if (`${inputString}`[i] == letter) {
+                    count++
+                }
+            }
+            return count;
+        }
+    </script>
+</body>
+
+</html>
