@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Find if a number is Even or Odd</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>Even/Odd</h1>
+    <div>Check if a positive, whole number is even or odd by adding it below:</div>
+    <input class="numberInput" type="text">
+    <p class="paragraph"></p>
+
+    <script>
+        const input = document.querySelector('.numberInput');
+        const para = document.querySelector('.paragraph');
+        input.addEventListener("change", () => {
+            let number = parseFloat(input.value);
+            if (isNaN(number)) {
+                para.innerHTML = "Try giving a number instead."
+            } else if (isEven(number) === undefined) {
+                para.innerHTML = "The number is either negative or float";
+            } else if (isEven(number) === true) {
+                para.innerHTML = "The number is even."
+            } else {
+                para.innerHTML = "The number is odd."
+            }
+            });
+
+        function isEven(num) {
+            if (!Number.isInteger(num) || num < 0) {
+                return undefined;
+            } else if (num == 0) {
+                return true;
+            } else if (num == 1) {
+                return false;
+            } else {
+                return isEven(num - 2);
+            // Using a very unnecessary recursion as instructed in https://eloquentjavascript.net/03_functions.html#p_zxMN8E0WOI 
+            // Could (should) have used num % 2 == 0 instead for better results.
+            }
+        }
+    </script>
+</body>
+
+</html>
