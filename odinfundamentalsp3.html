@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Odin Javascript Fundamentals pt3</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>Javascript Fundamentals pt.3</h1>
+    <div>Write a function called add7 that takes one number and returns that number + 7.</div>
+    <input class="inputAdd7" type="number">
+    <p class="p1"></p>
+    <div>Write a function called multiply that takes 2 numbers and returns their product.</div>
+    <input class="mult1" type="number">
+    <input class="mult2" type="number">
+    <output class="multOut"></output>
+    <button class="multButton" style="display:block; margin: 10px 0;">Click to multiply</button>
+    <p class="p2"></p>
+    <div>Write a function called capitalize that takes a string and returns that string with only the first letter
+        capitalized. Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.</div>
+    <input class="capitalize" type="text">
+    <p class="p3"></p>
+    <div>Write a function called lastLetter that takes a string and returns the very last letter of that string:
+
+        lastLetter("abcd") should return "d"
+    </div>
+    <input class="lastLetter" type="text">
+    <p class="p4"></p>
+    <script>
+        const input1 = document.querySelector('.inputAdd7');
+        const p1 = document.querySelector('.p1');
+
+        input1.addEventListener("change", () => {
+            p1.innerHTML = `${printFunc(add7)} <br>Result:<br>`;
+            p1.innerHTML += add7(+input1.value);
+        });
+
+        const mult1 = document.querySelector('.mult1');
+        const mult2 = document.querySelector('.mult2');
+        const multOut = document.querySelector('.multOut');
+        const multButton = document.querySelector('.multButton');
+        const p2 = document.querySelector('.p2');
+        multButton.addEventListener("click", () => {
+            p2.innerHTML = `${printFunc(multiply)} <br>Result:<br>`;
+            p2.innerHTML += multiply(+mult1.value, +mult2.value);
+        });
+        const input3 = document.querySelector('.capitalize');
+        const p3 = document.querySelector('.p3');
+        input3.addEventListener("change", () => {
+            p3.innerHTML = `${printFunc(capitalize)} <br>Result:<br>`;
+            p3.innerHTML += capitalize(input3.value);
+        });
+        const input4 = document.querySelector('.lastLetter');
+        const p4 = document.querySelector('.p4');
+        input4.addEventListener("change", () => {
+            p4.innerHTML = `${printFunc(lastLetter)} <br>Result:<br>`;
+            p4.innerHTML += lastLetter(input4.value);
+        });   
+        // function declarations
+        function printFunc(functionName) {
+            return `${functionName}`;
+        }
+        function add7(num) {
+            return num + 7;
+        }
+        function multiply(a, b) {
+            return a * b;
+        }
+        function capitalize(string) {
+            return String.prototype.toUpperCase.call(String.prototype.toLowerCase.call(string.slice(0, 1))) + String.prototype.toLowerCase.call(String.prototype.toUpperCase.call(string.slice(1)));
+        }
+        // string = string.toUpperCase();
+        // string = string.toLowerCase();
+        // done twice to make all letters lowercase
+        // do the reverse only for the first letter
+        // slice at (0,1) and (1)
+        // return
+        function lastLetter(string) {
+            return string.slice(string.length - 1);
+        }
+    </script>
+</body>
+
+</html>
