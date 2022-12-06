@@ -3,3 +3,12 @@ input {
     font-family: 'Courier New', Courier, monospace;
     margin: 10px 1px 0;
 }
+
+.exercise {
+    width: 67%;
+}
+
+.output {
+    font-size: 1.5em;
+    height: 2rem;
+}
